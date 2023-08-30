@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", sans-serif;
+    min-height: 100vh;
+}
+
+.drag-and-drop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    border: 3px dotted #b8b8b8;
+    border-radius: 15px;
+    background: #f3f3f3;
+}
