@@ -22,7 +22,7 @@ dragAndDrop.addEventListener('drop', (e) => {
     e.preventDefault()
     const files = e.dataTransfer.files
     for (let key in files) {
-        if (!types.includes(files[key].type)){
+        if (!types.includes(files[key].type)) {
             continue;
         }
         imagesForUpload.push(files[key])
@@ -34,9 +34,25 @@ dragAndDrop.addEventListener('drop', (e) => {
     }
 })
 
-const  uploadImages = () => {
+const uploadImages = () => {
     let formData = new FormData();
     for (let key in imagesForUpload) {
         formData.append(key, imagesForUpload[key])
     }
+    fetch('/core/upload.php', {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status) {
+                imagesForUpload = []
+                imagesList.innerHTML = ``
+                btn.setAttribute('disabled', true)
+                alert('File uploaded successfully')
+            }
+            else {
+                alert('File not uploaded')
+            }
+        })
 }
