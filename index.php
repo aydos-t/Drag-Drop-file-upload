@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Drag&Drop</title>
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/scss/app.css">
 </head>
 <body>
 <div class="drag-and-drop active">
