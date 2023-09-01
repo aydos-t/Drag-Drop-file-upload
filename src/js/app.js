@@ -32,13 +32,17 @@ dragAndDrop.addEventListener('drop', (e) => {
     if (imagesForUpload.length > 0) {
         btn.removeAttribute('disabled')
     }
+
+    dragAndDrop.classList.remove('active');
 })
 
 const uploadImages = () => {
     let formData = new FormData();
-    for (let key in imagesForUpload) {
-        formData.append(key, imagesForUpload[key])
-    }
+
+    imagesForUpload.forEach((image, key) => {
+        formData.append(key, image);
+    })
+
     fetch('/core/upload.php', {
         method: "POST",
         body: formData
@@ -50,8 +54,7 @@ const uploadImages = () => {
                 imagesList.innerHTML = ``
                 btn.setAttribute('disabled', true)
                 alert('File uploaded successfully')
-            }
-            else {
+            } else {
                 alert('File not uploaded')
             }
         })
